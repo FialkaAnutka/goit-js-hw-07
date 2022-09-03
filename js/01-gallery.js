@@ -48,8 +48,7 @@ function onGalleryItemClick(e) {
 			},
 		},
 	)
-
-	
+    
 	function onEscClick(e) {
 		if (e.code === 'Escape') {
 			instance.close();
