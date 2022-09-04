@@ -55,7 +55,7 @@ function onGalleryItemClick(e) {
 				instance.close();
 			}
 		}
-		instance.show();
+		instance.show()
 };
 
 
