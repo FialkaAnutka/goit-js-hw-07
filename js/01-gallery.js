@@ -3,6 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
+
 const galleryContainer = document.querySelector('.js-gallery')
 
 function addGalleryContainer() {
@@ -24,8 +25,8 @@ function addGalleryContainer() {
 		.join('');
 }
 
-galleryContainer.insertAdjacentHTML('beforeend', addGalleryContainer);
-galleryContainer.addEventListener('click', onGalleryItemClick);
+galleryContainer.insertAdjacentHTML('beforeend', addGalleryContainer());
+galleryContainer.addEventListener('click', onGalleryItemClick());
 
 function onGalleryItemClick(e) {
 	e.preventDefault();
@@ -41,20 +42,20 @@ function onGalleryItemClick(e) {
 		`,
 		{
 			onShow: () => {
-				window.addEventListener("keydown", onEscClick);
+				window.addEventListener("keydown", onEscapeClick);
 			},
 			onClose: () => {
-				window.removeEventListener("keydown", onEscClick);
+				window.removeEventListener("keydown", onEscapeClick);
 			},
 		},
-	)
+	);
     
-	function onEscClick(e) {
-		if (e.code === 'Escape') {
-			instance.close();
+		function onEscapeClick(e) {
+			if (e.code === 'Escape') {
+				instance.close();
+			}
 		}
-	};
-	instance.show();
+		instance.show();
 };
 
 

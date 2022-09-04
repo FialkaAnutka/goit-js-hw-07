@@ -24,12 +24,14 @@ function addGalleryContainer() {
 		.join('');
 }
 
-galleryContainer.insertAdjacentHTML('afterbegin', addGalleryContainer);
+galleryContainer.insertAdjacentHTML('afterbegin', addGalleryContainer());
 
 let gallery = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
+
+console.log(gallery);
 
 // 1.Создание и рендер разметки по массиву данных galleryItems и предоставленному шаблону элемента галереи. 
 // Используй готовый код из первого задания.
