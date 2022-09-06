@@ -37,7 +37,7 @@ function onGalleryItemClick(e) {
 
 	const instance = basicLightbox.create(
 		`
-		<img srs="${e.target.dataset.sourse}" 
+		<img srс="${e.target.dataset.sourse}" 
 		width="800" height="600">
 		`,
 		{
