@@ -26,7 +26,7 @@ function addGalleryContainer() {
 }
 
 galleryContainer.insertAdjacentHTML('beforeend', addGalleryContainer());
-galleryContainer.addEventListener('click', onGalleryItemClick());
+galleryContainer.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(e) {
 	e.preventDefault();
@@ -49,21 +49,21 @@ function onGalleryItemClick(e) {
 			},
 		},
 	);
-    
-		function onEscapeClick(e) {
-			if (e.code === 'Escape') {
-				instance.close();
-			}
+
+	function onEscapeClick(e) {
+		if (e.code === 'Escape') {
+			instance.close();
 		}
-		instance.show()
+	}
+	instance.show()
 };
 
 
 	// 1.Создание и рендер разметки по массиву данных galleryItems 
 	// и предоставленному шаблону элемента галереи.
 	// 2.Реализация делегирования на div.gallery и получение url большого изображения.
-	// 3.Подключение скрипта и стилей библиотеки модального окна basicLightbox. 
+	// 3.Подключение скрипта и стилей библиотеки модального окна basicLightbox.
 	// Используй CDN сервис jsdelivr и добавь в проект ссылки на минифицированные (.min) файлы библиотеки.
 	// 4.Открытие модального окна по клику на элементе галереи. Для этого ознакомься с документацией и примерами.
-	// 5.Замена значения атрибута src элемента <img> в модальном окне перед открытием. 
+	// 5.Замена значения атрибута src элемента <img> в модальном окне перед открытием.
 	// Используй готовую разметку модального окна с изображением из примеров библиотеки basicLightbox
