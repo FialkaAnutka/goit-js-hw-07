@@ -51,8 +51,8 @@ function getOriginalImg(evt) {
     return evt.target.dataset.source;
 };
 
-function onEscapeClick(event) {
-    if (event.code === 'Escape') {
+function onEscapeClick(evt) {
+    if (evt.code === 'Escape') {
         instance.close();
     }
 };
