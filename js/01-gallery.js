@@ -3,59 +3,61 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-
 const galleryContainer = document.querySelector('.js-gallery')
-
-function addGalleryContainer() {
-	return galleryItems
-		.map(({ original, preview, description }) => {
-			return `
-        <div class="gallery__item">
-        <a class="gallery__link" href="${original}">
-            <img
+const addGalleryContainer = galleryItems.map(({ preview, original, description }) => {
+    return `
+    <div class="gallery__item">
+    <a class="gallery__link" href="${original}">
+        <img 
             class="gallery__image"
             src="${preview}"
             data-source="${original}"
             alt="${description}"
             />
-        </a>
-        </div>
-        `;
-		})
-		.join('');
-}
+    </a>
+    </div>
+    `
+}).join('');
 
-galleryContainer.insertAdjacentHTML('beforeend', addGalleryContainer());
-galleryContainer.addEventListener('click', onGalleryItemClick);
+galleryContainer.insertAdjacentHTML("afterbegin", addGalleryContainer)
+galleryContainer.addEventListener('click', onGalleryContainerClick)
 
-function onGalleryItemClick(e) {
-	e.preventDefault();
+let instance;
 
-	if (!e.target.classList.contains('gallery__image')) {
-		return;
-	}
+function onGalleryContainerClick(evt) {
+    evt.preventDefault();
 
-	const instance = basicLightbox.create(
-		`
-		<img srс="${e.target.dataset.sourсe}" width="800" height="600">
-		`,
-		{
-			onShow: () => {
-				window.addEventListener("keydown", onEscapeClick);
-			},
-			onClose: () => {
-				window.removeEventListener("keydown", onEscapeClick);
-			},
-		},
-	);
+    if (!evt.target.classList.contains('gallery__image')) {
+        return
+    };
 
-	function onEscapeClick(e) {
-		if (e.code === 'Escape') {
-			instance.close();
-		}
-	}
-	instance.show()
+    const url = getOriginalImg(evt);
+    instance = createModal(url);
+
+    instance.show(window.addEventListener('keydown', onEscapeClick))
 };
+
+function createModal(url) {
+    return basicLightbox.create(`
+      <img src="${url}">
+    `, {
+        onClose: () => {
+            window.removeEventListener('keydown', onEscapeClick);
+        }
+    });
+};
+
+function getOriginalImg(evt) {
+    return evt.target.dataset.source;
+};
+
+function onEscapeClick(event) {
+    if (event.code === 'Escape') {
+        instance.close();
+    }
+};
+
+
 
 
 	// 1.Создание и рендер разметки по массиву данных galleryItems 
