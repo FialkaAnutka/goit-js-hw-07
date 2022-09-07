@@ -20,7 +20,7 @@ function addGalleryContainer() {
             />
         </a>
         </div>
-        `
+        `;
 		})
 		.join('');
 }
@@ -37,8 +37,7 @@ function onGalleryItemClick(e) {
 
 	const instance = basicLightbox.create(
 		`
-		<img srс="${e.target.dataset.sourse}" 
-		width="800" height="600">
+		<img srс="${e.target.dataset.sourсe}" width="800" height="600">
 		`,
 		{
 			onShow: () => {
